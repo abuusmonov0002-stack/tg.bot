@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; color: #333; text-align: center; padding: 20px; }
+        .card { background: white; border-radius: 12px; padding: 20px; margin: 10px auto; max-width: 300px; 
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: none; }
+        .active { display: block; border-left: 5px solid #0088cc; }
+        h1 { color: #0088cc; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Mavzular paneli</h1>
+    <p id="welcome-msg">Yuklanmoqda...</p>
+
+    <div id="topic-Umumiy" class="card">📂 Umumiy mavzu bo'limi</div>
+    <div id="topic-Dasturlash" class="card">💻 Dasturlash darslari</div>
+    <div id="topic-Dizayn" class="card">🎨 Dizayn loyihalari</div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Oynani to'liq ekranga yoyish
+
+        const user = tg.initDataUnsafe.user;
+        document.getElementById('welcome-msg').innerText = `Xush kelibsiz, ${user.first_name}!`;
+
+        // URL'dan ruxsatlarni o'qish (Buni keyingi qadamda bot yuboradi)
+        const urlParams = new URLSearchParams(window.location.search);
+        const access = urlParams.get('access') || ""; // Masalan: "Umumiy,Dasturlash"
+        
+        const allowedTopics = access.split(',');
+
+        allowedTopics.forEach(topic => {
+            const element = document.getElementById('topic-' + topic.trim());
+            if (element) {
+                element.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
