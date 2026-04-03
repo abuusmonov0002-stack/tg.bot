@@ -15,9 +15,39 @@
     <h1>Mavzular paneli</h1>
     <p id="welcome-msg">Yuklanmoqda...</p>
 
-    <div id="topic-Umumiy" class="card">📂 Umumiy mavzu bo'limi</div>
-    <div id="topic-Dasturlash" class="card">💻 Dasturlash darslari</div>
-    <div id="topic-Dizayn" class="card">🎨 Dizayn loyihalari</div>
+    <div id="topic-Umumiy" class="card">
+    <h3>📂 Umumiy bo'lim</h3>
+    <p>Hamma uchun ochiq ma'lumotlar.</p>
+    <button onclick="tg.close()">Yopish</button>
+</div>
+
+<div id="topic-Dasturlash" class="card">
+    <h3>💻 Dasturlash</h3>
+    <p>Python va Ma'lumotlar bazasi darslari.</p>
+    <button onclick="location.href='https://google.com'">Darsni boshlash</button>
+</div>
+
+<div id="topic-Dizayn" class="card">
+    <h3>🎨 Dizayn</h3>
+    <p>Grafik dizayn bo'yicha qo'llanmalar.</p>
+    <button onclick="tg.showAlert('Tez kunda qo\'shiladi!')">Ma'lumot</button>
+</div>
+
+<style>
+    /* Tugmalar uchun chiroyli stil */
+    button {
+        background-color: #0088cc;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 10px;
+    }
+    button:active { background-color: #006699; }
+</style>
 
     <script>
         const tg = window.Telegram.WebApp;
